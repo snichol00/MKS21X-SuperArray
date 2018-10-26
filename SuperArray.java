@@ -90,4 +90,32 @@ public class SuperArray{
     }
     data = newarr;
   }
+
+  public boolean contains(String target){
+    for (int x = 0; x < size(); x++){
+      if(target.equals(data[x])){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public int indexOf(String target){
+    for (int x = 0; x < size(); x++){
+      if(target.equals(data[x])){
+        return x;
+      }
+    }
+    return 0;
+  }
+
+  public int lastIndexOf(String target){
+    int last = 0;
+    for (int x = 0; x < size(); x++){
+      if(target.equals(data[x])){
+        last = x;
+      }
+    }
+    return last;
+  }
 }
