@@ -64,7 +64,7 @@ public class SuperArray{
 
   public String get(int idx){
     if (idx < 0 || idx >= size()){
-      System.err.print("Error: idx out of range");
+      System.err.println("Error: idx out of range");
       return null;
     }
     else{
@@ -108,11 +108,11 @@ public class SuperArray{
         return x;
       }
     }
-    return 0;
+    return -1;
   }
 
   public int lastIndexOf(String target){
-    int last = 0;
+    int last = -1;
     for (int x = 0; x < size(); x++){
       if(target.equals(data[x])){
         last = x;
@@ -123,7 +123,7 @@ public class SuperArray{
 
   public void add(int idx, String str){
     if (idx < 0 || idx > size()){
-      System.out.print("Error: idx out of range");
+      System.out.println("Error: idx out of range");
     }
     else{
       for (int x = size() + 1; x >= idx; x -= 1){
@@ -138,5 +138,32 @@ public class SuperArray{
     }
   }
 
+  public String remove(int idx) {
+    String oldstr = data[idx];
+    if (idx < 0 || idx > size()){
+      System.out.println("Error: idx out of range");
+      return null;
+    }
+    else{
+      for (int x = idx; x <= size(); x += 1){
+        if (x == size()){
+          data[x] = null;
+        }
+        else{
+          data[x] = data[x+1];
+        }
+      }
+      size --;
+    }
+    return oldstr;
+  }
 
+  public boolean remove(String str){
+    int idx = indexOf(str);
+    if (idx == -1){
+      return false;
+    }
+    remove(idx);
+    return true;
+  }
 }
