@@ -160,10 +160,12 @@ public class SuperArray{
 
   public boolean remove(String str){
     int idx = indexOf(str);
-    if (idx == -1){
+    if (contains(str)){
+      remove(idx);
+      return true;
+    }
+    else{
       return false;
     }
-    remove(idx);
-    return true;
   }
 }
