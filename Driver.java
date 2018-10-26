@@ -82,5 +82,40 @@ public class Driver{
 		System.out.println("SuperArray should now be []");
 		System.out.println(beef);
 		/** phase 1 testing end*/
+    // phase 2 Testing
+    beef.add("hola");
+        beef.add("dog");
+        beef.add("cool");
+    beef.add("cat");
+        beef.add("apple");
+        beef.add("green");
+    beef.add("blue");
+        beef.add("pig");
+    beef.add("hii");
+        beef.add("joy");
+    beef.add("yes");
+        beef.add("no");
+    System.out.println(beef);
+    System.out.println(beef.toStringDebug());
+    /**phase 2 testing start*/
+    System.out.println("Phase 2 testing, start!");
+    //testing resize()
+    SuperArray letters = new SuperArray();
+
+    for (int x = 0; x < 20; x++){
+      System.out.println();
+			letters.add("a");
+      System.out.println("Size: " + letters.size());
+      System.out.println(letters);
+		} //array should now be filled to index 19
+
+    System.out.println();
+    System.out.println("Phase 2 testing, end");
+    /** phase 2 testing end*/
+
+    System.out.println();
+    System.out.println();
+
+    /** phase 2 testing end*/
 	}
 }
