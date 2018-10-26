@@ -1,9 +1,9 @@
 public class SuperArray{
   private String[] data;
-  private int size;
+  private int size = 0;
 
   public SuperArray(){
-    String arr[] = new String[10];
+    data = new String[10];
   }
 
   public void clear(){
@@ -23,12 +23,13 @@ public class SuperArray{
 
   public boolean add(String s){
     if (data.length > size()){
-      data[size + 1] = s;
+      data[size] = s;
+      size ++;
     }
-    /*else{
+    else{
       resize();
       add(s);
-    }*/
+    }
     return true;
   }
 
@@ -71,12 +72,22 @@ public class SuperArray{
   }
 
   public String set(int idx, String str){
+    String old = "";
     if (idx < 0 || idx >= size()){
       return null;
     }
     else{
+      old = data[idx];
       data[idx] = str;
     }
-    return toString();
+    return old;
+  }
+
+  private void resize(){
+    String newarr[] = new String[2*data.length+1];
+    for (int x = 0; x < size(); x++){
+      newarr[x] = data[x];
+    }
+    data = newarr;
   }
 }

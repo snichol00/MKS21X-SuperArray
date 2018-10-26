@@ -8,8 +8,8 @@ public class Driver{
 		System.out.println("\n!!Testing SuperArray initializing!!");
 		System.out.println("Testing toString(): should return []");
 		System.out.println(beef);
-		System.out.println("\nTesting toStringDebug(): should return [null, ... null]");
-		System.out.println(beef.toStringDebug());
+		//System.out.println("\nTesting toStringDebug(): should return [null, ... null]");
+		//System.out.println(beef.toStringDebug());
 
 		//testing size()
 		System.out.println("\n\n!!Testing size()!!");
