@@ -64,6 +64,7 @@ public class SuperArray{
 
   public String get(int idx){
     if (idx < 0 || idx >= size()){
+      System.err.print("Error: idx out of range");
       return null;
     }
     else{
@@ -74,6 +75,7 @@ public class SuperArray{
   public String set(int idx, String str){
     String old = "";
     if (idx < 0 || idx >= size()){
+      System.err.print("Error: idx out of range");
       return null;
     }
     else{
@@ -118,4 +120,23 @@ public class SuperArray{
     }
     return last;
   }
+
+  public void add(int idx, String str){
+    if (idx < 0 || idx > size()){
+      System.out.print("Error: idx out of range");
+    }
+    else{
+      for (int x = size() + 1; x >= idx; x -= 1){
+        if (x == idx){
+          data[x] = str;
+        }
+        else{
+          data[x] = data[x-1];
+        }
+      }
+      size ++;
+    }
+  }
+
+
 }

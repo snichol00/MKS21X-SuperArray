@@ -167,16 +167,18 @@ public class Driver{
 
     System.out.println();
 
-    /*//testing add(int,String)
+    //testing add(int,String)
     System.out.println(randomLetters);//should print [b,f,g,c,z,b,z]
 
     randomLetters.add(2, "a");
-    System.out.println(randomLetters);//should print [b,f,a,g,c,z,b,z]
+    System.out.println(randomLetters);
+    //should print [b,f,a,g,c,z,b,z]
     randomLetters.add(10, "a");//should print error
 
-    System.out.println();
+    System.out.println(randomLetters.toString());
+    System.out.println(randomLetters.toStringDebug());
 
-    //testing remove()
+    /**testing remove()
     System.out.println(randomLetters);//should print [b,f,a,g,c,z,b,z]
 
     System.out.println(randomLetters.remove(9));//should print null
