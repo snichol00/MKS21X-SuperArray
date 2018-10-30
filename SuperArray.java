@@ -6,6 +6,13 @@ public class SuperArray{
     data = new String[10];
   }
 
+  public SuperArray(int startingCapacity){
+    if (startingCapacity < 0){
+      throw new IllegalArgumentException();
+    }
+    data = new String[startingCapacity];
+  }
+
   public void clear(){
     size = 0;
   }
@@ -34,6 +41,9 @@ public class SuperArray{
   }
 
   public String toString(){
+    if (size() == 0){
+      return "[]";
+    }
     String output = "[";
     for(int x = 0; x < size(); x++){
       if (x == size() - 1){
@@ -43,13 +53,13 @@ public class SuperArray{
         output += data[x] + ", ";
       }
     }
-    if (size() == 0){
-      output += "]";
-    }
     return output;
   }
 
   public String toStringDebug(){
+    if (size() == 0){
+      return "[]";
+    }
     String output = "[";
     for(int x = 0; x < data.length; x++){
       if (x == data.length - 1){
@@ -64,8 +74,7 @@ public class SuperArray{
 
   public String get(int idx){
     if (idx < 0 || idx >= size()){
-      System.err.println("Error: idx out of range");
-      return null;
+      throw new IndexOutOfBoundsException();
     }
     else{
       return data[idx];
@@ -75,8 +84,7 @@ public class SuperArray{
   public String set(int idx, String str){
     String old = "";
     if (idx < 0 || idx >= size()){
-      System.err.print("Error: idx out of range");
-      return null;
+      throw new IndexOutOfBoundsException();
     }
     else{
       old = data[idx];
@@ -123,26 +131,66 @@ public class SuperArray{
 
   public void add(int idx, String str){
     if (idx < 0 || idx > size()){
-      System.out.println("Error: idx out of range");
+      throw new IndexOutOfBoundsException();
     }
     else{
-      for (int x = size() + 1; x >= idx; x -= 1){
+      if (size() >= data.length){
+        this.resize();
+        this.add(idx,str);
+      }
+      else{
+
+      for (int x = size(); x >= idx; x -= 1){
         if (x == idx){
           data[x] = str;
+          size ++;
         }
         else{
           data[x] = data[x-1];
         }
       }
-      size ++;
+    }
+
     }
   }
+  /*public void add(int idx,String str){
+    if (idx < 0 || idx > size()){
+      throw new IndexOutOfBoundsException("idx not good!");
+    }
+    else{
+      if (size() >= data.length){
+        this.resize();
+        for (int x = idx; x < data.length-1; x++){
+          if (x == idx){
+            data[x] = str;
+          }
+          else{
+            data[x+1]=data[x];
+          }
+        }
+       }
+
+      else if (size() < data.length){
+        for (int x = this.size(); x < data.length-1; x++){
+          if (x == idx){
+            data[x] = str;
+          }
+          else{
+            data[x+1]=data[x];
+          }
+        }
+      }
+    }
+
+
+    size++;
+  }*/
+
 
   public String remove(int idx) {
     String oldstr = data[idx];
     if (idx < 0 || idx > size()){
-      System.out.println("Error: idx out of range");
-      return null;
+      throw new IndexOutOfBoundsException();
     }
     else{
       for (int x = idx; x <= size(); x += 1){
